@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="f2Block font18">个人信息</div>
+    <p class="f2Block font18">个人信息</p>
 
     <div class="info">
       <div class="marginT20">

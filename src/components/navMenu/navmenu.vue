@@ -1,21 +1,21 @@
 <template>
-  <div>
-    <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-      background-color="#222324"
-      text-color="#8e8e8e"
-      active-text-color="#fff"
-    >
-      <div v-for="item in newrouter[0].children" v-if="!item.hidden">
-        <el-menu-item
-          :index="item.path"
-          @click="clickMenu(item)"
-          v-if="!item.hidden&&!item.children"
-        >{{item.name}}</el-menu-item>
-      </div>
-    </el-menu>
-  </div>
+   <div>
+      <el-menu
+        default-active="2"
+        class="el-menu-vertical-demo"
+        background-color="#222324"
+        text-color="#8e8e8e"
+        active-text-color="#fff"
+      >
+        <div v-for="item in newrouter[0].children" v-if="!item.hidden">
+          <el-menu-item
+            :index="item.path"
+            @click="clickMenu(item)"
+            v-if="!item.hidden&&!item.children"
+          >{{item.name}}</el-menu-item>
+        </div>
+      </el-menu>
+    </div>
 </template>
 <script>
 import { mapGetters } from "vuex";

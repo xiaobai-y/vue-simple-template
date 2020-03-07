@@ -31,11 +31,11 @@ export default {
   },
   methods: {
     submituUserInfo(data) {
-      console.log(data);
+      // console.log(data);
       this.$store
         .dispatch("Logins", data)
         .then(res => {
-          console.log(res);
+          // console.log(res);
           this.$router.push(
             { path: "/" },
             onComplete => {},

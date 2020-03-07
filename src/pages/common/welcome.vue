@@ -8,21 +8,12 @@ export default {
   name: "app",
   data() {
     return { 
-      editableTabs: [
-        {
-          title: "Tab 1",
-          name: "1",
-          content: "Tab 1 content"
-        },
-        {
-          title: "Tab 2",
-          name: "2",
-          content: "Tab 2 content"
-        }
-      ]
+
     };
   },
-  methods: {}
+  methods: {},
+  created(){
+  }
 };
 </script>
 <style lang="less">

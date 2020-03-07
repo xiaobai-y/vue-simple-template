@@ -5,7 +5,6 @@
     closable
     @tab-remove="removeTab"
     @tab-click="handleTabClick"
-    style="height:100%"
   >
     <el-tab-pane
       v-for="(item, index) in editableTabs"
@@ -13,14 +12,15 @@
       :label="item.name"
       :name="item.path"
     >
-    <router-view></router-view>
+ 
+    
     </el-tab-pane>
   </el-tabs>
 </template>
 <script>
 export default {
   name: "app",
-  data() {console.log()
+  data() {
     return {
       editableTabsValue: "/welcome",
       editableTabs: []

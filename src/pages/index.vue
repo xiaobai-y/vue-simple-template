@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+    <el-container>
 
     <el-header>
       <navHeader></navHeader>
@@ -14,11 +14,13 @@
       <!-- main -->
       <el-main>
         <navMain></navMain>
+        <router-view></router-view>
       </el-main>
 
     </el-container>
 
   </el-container>
+  
 </template>
 <script>
 import navHeader from "../components/header/header";
