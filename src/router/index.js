@@ -5,19 +5,23 @@ Vue.use(Router);
 import Login from '../pages/login.vue'
 import Index from '../pages/index.vue'
 
-import AppointmentCareManage from '../pages/appointmentCareManage.vue'
-import AppointmentCare from '../pages/appointmentCare.vue'
-import AppointmentTreatManage from '../pages/appointmentTreatManage.vue'
-import AppointmentTreat from '../pages/appointmentTreat.vue'
-import CustomerMange from '../pages/customerManage.vue'
-import DoctorsManage from '../pages/doctorsManage.vue'
-import Logs from '../pages/logs.vue'
-import MediceManage from '../pages/mediceManage.vue'
-import MessageBoard from '../pages/messageBoard.vue'
-import MyAppointment from '../pages/myAppointment.vue'
-import PersonalInfo from '../pages/personalInfo.vue'
-import PetsManage from '../pages/petsManage.vue'
-import Welcome from '../pages/welcome.vue'
+import AppointmentCareManage from '../pages/manager/appointmentCareManage.vue'
+import AppointmentTreatManage from '../pages/manager/appointmentTreatManage.vue'
+import CustomerMange from '../pages/manager/customerManage.vue'
+import DoctorsManage from '../pages/manager/doctorsManage.vue'
+import Logs from '../pages/manager/logs.vue'
+import MediceManage from '../pages/manager/mediceManage.vue'
+import PetsManage from '../pages/manager/petsManage.vue'
+
+import AppointmentCare from '../pages/customer/appointmentCare.vue'
+import AppointmentTreat from '../pages/customer/appointmentTreat.vue'
+import MessageBoard from '../pages/customer/messageBoard.vue'
+import MyAppointmentCustomer from '../pages/customer/myAppointmentCustomer.vue'
+
+import MyAppointmentDoctor from '../pages/doctor/myAppointmentDoctor.vue'
+
+import PersonalInfo from '../pages/common/personalInfo.vue'
+import Welcome from '../pages/common/welcome.vue'
 
 export default new Router({
   routes: [
@@ -44,7 +48,8 @@ export const powerRouter = [
       { path: '/appointmentCare', name: '预约寄养', component: AppointmentCare, meta: { role: ['B'] } },
       { path: '/appointmentTreat', name: '预约就诊', component: AppointmentTreat, meta: { role: ['B'] } },
       { path: '/messageBoard', name: '留言板', component: MessageBoard, meta: { role: ['B'] } },
-      { path: '/myAppointment', name: '我的预约', component: MyAppointment, meta: { role: ['C'] } },
+      { path: '/myAppointmentCustomer', name: '我的预约就诊', component: MyAppointmentCustomer, meta: { role: ['B'] } },
+      { path: '/myAppointmentDoctor', name: '我的预约', component: MyAppointmentDoctor, meta: { role: ['C'] } },    
       { path: '/personalInfo', name: '个人信息', component: PersonalInfo, },
     ]
   }

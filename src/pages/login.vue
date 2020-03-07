@@ -4,10 +4,10 @@
       <div class="xtdl">系统登录</div>
       <el-form label-position="right" label-width="0px" :model="loginfrom">
         <el-form-item>
-          <el-input v-model="loginfrom.username" placeholder="用户名"></el-input>
+          <el-input v-model="loginfrom.username" placeholder="用户名" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input type="password" v-model="loginfrom.pew" placeholder="密码"></el-input>
+          <el-input type="password" v-model="loginfrom.pew" placeholder="密码" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
           <!-- <el-button type="primary" @click="submituUserInfo(loginfrom)">登录</el-button> -->

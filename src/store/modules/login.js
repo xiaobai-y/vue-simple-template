@@ -18,7 +18,7 @@ const login = {
     },
     actions: {
         Logins({ commit }, info) {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve, reject) => {          
                 let data = {};
                 loginByUserInfo.map(function (item) { //获取所以用户信息
                     if ((info.username === item.username) && (info.pew == item.pew)) {
