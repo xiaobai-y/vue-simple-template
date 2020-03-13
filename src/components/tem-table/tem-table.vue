@@ -14,11 +14,14 @@
       :label="item.label"
       :width="item.width?item.width:''"
     >
-      <template slot-scope="scope">
-        <span v-if="item.render">{{item.render(scope.row)}}</span>
+      <template  slot-scope="scope">
+
+        <el-tag v-if="item.render" :type="item.render(scope.row).type" size="small">{{item.render(scope.row).state}}</el-tag>
         <span v-else>{{scope.row[item.prop]}}</span>
+
       </template>
     </el-table-column>
+    
     <el-table-column
       v-if="tableOption.label"
       :width="tableOption.width"
@@ -30,8 +33,7 @@
           v-for="(item,index) in tableOption.options"
           :key="index"
           :type="item.type"
-          :icon="item.icon"
-          @click="handleButton(item.methods,scope.row,scope.row)"
+          @click="handleButton(item.methods,scope.row)"
           size="mini"
         >{{item.label}}</el-button>
       </template>
@@ -68,10 +70,15 @@ export default {
     return {};
   },
   mounted(){
-       console.log('children mounted')
-       console.log(this.tableData)
+      //  console.log('children mounted')
+      //  console.log(this.tableData)
   },
   created(){
   },
+  methods:{
+    handleButton(methods,row){
+      this.$emit('handleButton',{'methods':methods,'row':row});
+    }
+  }
 };
 </script>

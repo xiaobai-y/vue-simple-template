@@ -6,7 +6,7 @@ const tabs = {
                 path:'/welcome'
             }
         ],
-        activeTab:''
+        activeTab:'/welcome' //当前打开的标签页
     },
     mutations:{
         addTab(state,tabItem){
@@ -16,11 +16,19 @@ const tabs = {
             }
             state.openTabs.push(obj);
             state.activeTab = tabItem.path
+
         },
-        changeTab(state,tabItem){
-            console.log(tabItem)
-            state.activeTab = tabItem.path
+        changeTab(state,tabPath){
+            state.activeTab = tabPath
+
         },
+        removeTab(state,tabPath){
+            // filter()方法操作数组不是响应式的 
+            state.openTabs =  state.openTabs.filter(function(item){
+               return item.path !== tabPath
+            })
+
+        }
     }
 }
 export default tabs

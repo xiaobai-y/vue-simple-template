@@ -1,31 +1,34 @@
 <template>
   <div class="app">
     <div class="login_box">
-      <div class="xtdl">系统登录</div>
+      <div class="xtdl">系统注册</div>
       <el-form
         label-position="right"
         label-width="0px"
-        :model="loginfrom"
+        :model="registerform"
+        ref="registerform"
         :rules="rules"
-        ref="loginfrom"
       >
+        <el-form-item prop="username">
+          <el-input v-model="registerform.username" placeholder="姓名" autocomplete="off"></el-input>
+        </el-form-item>
         <el-form-item prop="phone">
-          <el-input v-model="loginfrom.phone" placeholder="手机号" autocomplete="off"></el-input>
+          <el-input v-model="registerform.phone" placeholder="手机号" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input
             type="password"
-            v-model="loginfrom.password"
+            v-model="registerform.password"
             placeholder="密码"
             autocomplete="off"
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <div @click="submituUserInfo('loginfrom')" class="submitBtn">登录</div>
+          <div @click="submituUserInfo('registerform')" class="submitBtn">注册</div>
         </el-form-item>
       </el-form>
       <div style="text-align:center;">
-        <router-link to="/register" style="color:#4373a5;font-size:14px;">还没账号，去注册>></router-link>
+        <router-link to="/login" style="color:#4373a5;font-size:14px;">已有账号，去登录>></router-link>
       </div>
     </div>
   </div>
@@ -37,11 +40,15 @@ export default {
   name: "login",
   data() {
     return {
-      loginfrom: {
+      registerform: {
+        username: "",
         phone: "",
         password: ""
       },
       rules: {
+        username: [
+          { required: true, message: "请填写手机号", trigger: "blur" }
+        ],
         phone: [
           {
             required: true,
@@ -56,31 +63,21 @@ export default {
   },
   methods: {
     submituUserInfo(formName) {
-      console.log(this.loginfrom)
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$http({
             method: "post",
-            url: "/ptm/login/login",
-            data: this.loginfrom
+            url: "/ptm/user/insertUserForCustomer",
+            data: this.registerform
           })
             .then(res => {
+              var that = this;
               console.log(res);
               if (res.data.ID == "S") {
-                let res1 = res.data.user;
-                this.$store.commit("SET_USERNAME", res1.username);
-                sessionStorage.setItem("USERNAME", res1.username); //存入 session
-                this.$store.commit("SET_ROLE", res1.type);
-                sessionStorage.setItem("ROLE", res1.type);
-                this.$store.commit("SET_USERID", res1.id);
-                sessionStorage.setItem("USERID", res1.id);
-                this.$store.commit("SET_PHONE", res1.phone);
-                sessionStorage.setItem("PHONE", res1.phone);
-                this.$store.commit("SET_MONEY", res1.money);
-                sessionStorage.setItem("MONEY", res1.money);
-                // 存token
-                sessionStorage.setItem("AUTH_TOKEN", res.data.token);
-                this.$router.push({ path: "/" });
+                this.$message("注册成功,去登录");
+                setTimeout(function() {
+                  that.$router.push({ path: "/login" });
+                }, 1000);
               } else if (res.data.ID == "E") {
                 this.$message(res.data.MSG);
               }

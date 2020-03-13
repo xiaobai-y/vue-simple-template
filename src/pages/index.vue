@@ -15,6 +15,7 @@
       <el-main>
         <navMain></navMain>
         <router-view></router-view>
+        
       </el-main>
 
     </el-container>
@@ -26,6 +27,7 @@
 import navHeader from "../components/header/header";
 import navMenu from "../components/navMenu/navmenu";
 import navMain from "../components/navMain/navTabs";
+
 export default {
   name: "app",
   data() {
@@ -34,7 +36,7 @@ export default {
   components: {
     navHeader,
     navMenu,
-    navMain
+    navMain,
   },
   methods: {}
 };
